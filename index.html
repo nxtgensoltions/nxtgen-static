@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NxtGen Solutions — Accounting, Taxation & Business Consulting | Kolkata</title>
+  <meta name="description" content="NxtGen Solutions — Professional accounting, ITR filing, GST registration, TDS, PF/ESIC and business consulting. Located in Salt Lake, Kolkata. Call: 9123384377" />
+  <meta name="keywords" content="ITR filing Kolkata, GST registration Salt Lake, accounting services Kolkata, TDS filing, business consulting Kolkata, NxtGen Solutions" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:    #020B18;
+      --navy-2:  #050F1F;
+      --navy-3:  #0A1929;
+      --gold:    #F5A623;
+      --gold-2:  #FFB940;
+      --gold-3:  #FFC857;
+      --cyan:    #00D4FF;
+      --green:   #25D366;
+      --white:   #FFFFFF;
+      --white60: rgba(255,255,255,.6);
+      --white30: rgba(255,255,255,.3);
+      --white10: rgba(255,255,255,.1);
+      --white05: rgba(255,255,255,.05);
+      --font-h:  'Outfit', sans-serif;
+      --font-b:  'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--font-b);
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+    /* ─── CANVAS BG ─── */
+    #bg-canvas {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; opacity: .35;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      transition: background .4s, backdrop-filter .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      background: rgba(2,11,24,.9);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(245,166,35,.15);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-3));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-h); font-weight: 900; font-size: 16px;
+      color: var(--navy); letter-spacing: -1px;
+      box-shadow: 0 0 20px rgba(245,166,35,.4);
+    }
+    .nav-logo-text { font-family: var(--font-h); font-weight: 800; font-size: 17px; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      text-decoration: none; color: var(--white60);
+      font-size: 13px; font-weight: 500; letter-spacing: .3px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      display: flex; align-items: center; gap: 6px;
+      padding: 9px 18px;
+      background: var(--gold);
+      color: var(--navy) !important;
+      border-radius: 8px;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--gold-2) !important;
+      color: var(--navy) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(245,166,35,.4) !important;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 100px 5% 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); pointer-events: none;
+      animation: orb-float 8s ease-in-out infinite;
+    }
+    .hero-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245,166,35,.18), transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,212,255,.12), transparent 70%);
+      bottom: -80px; left: -80px;
+      animation-delay: -4s;
+    }
+    @keyframes orb-float {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(20px,-20px) scale(1.05); }
+      66% { transform: translate(-10px,15px) scale(.98); }
+    }
+
+    /* Grid lines decoration */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: rgba(245,166,35,.1);
+      border: 1px solid rgba(245,166,35,.25);
+      border-radius: 100px;
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fade-up .8s ease both;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.7); }
+    }
+
+    .hero-title {
+      font-family: var(--font-h);
+      font-size: clamp(42px, 7vw, 90px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      animation: fade-up .8s .1s ease both;
+    }
+    .hero-title .line-gold { color: var(--gold); display: block; }
+    .hero-title .line-outline {
+      -webkit-text-stroke: 2px rgba(255,255,255,.3);
+      color: transparent;
+      display: block;
+    }
+
+    .hero-desc {
+      max-width: 640px;
+      font-size: 16px; line-height: 1.8; color: var(--white60);
+      margin: 0 auto 40px;
+      animation: fade-up .8s .2s ease both;
+    }
+
+    .hero-chips {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      margin-bottom: 44px;
+      animation: fade-up .8s .3s ease both;
+    }
+    .chip {
+      padding: 7px 16px;
+      background: var(--white05);
+      border: 1px solid var(--white10);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 500; color: var(--white60);
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .chip:hover { background: rgba(245,166,35,.15); border-color: rgba(245,166,35,.4); color: var(--gold); }
+
+    .hero-btns {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      animation: fade-up .8s .4s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: var(--navy);
+      font-family: var(--font-h); font-weight: 800; font-size: 14px;
+      border-radius: 12px; text-decoration: none;
+      box-shadow: 0 8px 30px rgba(245,166,35,.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,166,35,.5); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: var(--white10);
+      border: 1px solid var(--white10);
+      color: var(--white);
+      font-family: var(--font-h); font-weight: 700; font-size: 14px;
+      border-radius: 12px; text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: background .2s, border-color .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.15); border-color: var(--white30); }
+
+    /* ─── STATS STRIP ─── */
+    #stats {
+      position: relative; z-index: 1;
+      background: linear-gradient(135deg, rgba(245,166,35,.08), rgba(0,212,255,.04));
+      border-top: 1px solid rgba(245,166,35,.15);
+      border-bottom: 1px solid rgba(245,166,35,.15);
+      padding: 32px 5%;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: var(--font-h);
+      font-size: 36px; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--gold-3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-lbl { font-size: 12px; color: var(--white60); margin-top: 4px; font-weight: 500; letter-spacing: .5px; }
+
+    /* ─── SECTION SHELL ─── */
+    section { position: relative; z-index: 1; padding: 90px 5%; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px;
+      border: 1px solid rgba(245,166,35,.3);
+      background: rgba(245,166,35,.08);
+      border-radius: 100px;
+      font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: var(--font-h);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900; line-height: 1.15;
+      letter-spacing: -1px;
+    }
+    .section-title em { font-style: normal; color: var(--gold); }
+    .section-desc {
+      color: var(--white60); font-size: 15px; line-height: 1.8;
+      max-width: 520px; margin-top: 14px;
+    }
+    .center { text-align: center; }
+    .center .section-desc { margin: 14px auto 0; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--navy-2); }
+    .services-grid {
+      max-width: 1100px; margin: 52px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .svc-card {
+      position: relative; overflow: hidden;
+      background: var(--white05);
+      border: 1px solid var(--white10);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+      cursor: default;
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--card-clr, rgba(245,166,35,.07)), transparent 60%);
+      opacity: 0; transition: opacity .3s;
+      border-radius: inherit;
+    }
+    .svc-card:hover { transform: translateY(-6px); border-color: var(--card-border, rgba(245,166,35,.3)); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .svc-card:hover::before { opacity: 1; }
+    .svc-icon {
+      width: 54px; height: 54px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+      background: var(--icon-bg, rgba(245,166,35,.15));
+      border: 1px solid var(--icon-border, rgba(245,166,35,.2));
+    }
+    .svc-card h3 {
+      font-family: var(--font-h); font-weight: 700; font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .svc-card p {
+      font-size: 13px; line-height: 1.7; color: var(--white60);
+    }
+    .svc-badge {
+      display: inline-block; margin-top: 14px;
+      padding: 3px 10px;
+      background: rgba(245,166,35,.15);
+      border: 1px solid rgba(245,166,35,.25);
+      border-radius: 100px;
+      font-size: 10px; font-weight: 700;
+      color: var(--gold); letter-spacing: 1px; text-transform: uppercase;
+    }
+    .svc-card.feat {
+      grid-column: span 1;
+      border-color: rgba(245,166,35,.25);
+      background: linear-gradient(135deg, rgba(245,166,35,.08), var(--white05));
+    }
+
+    /* ─── WHY US ─── */
+    #why { background: var(--navy-3); }
+    .why-grid {
+      max-width: 1100px; margin: 52px auto 0;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+    }
+    .why-visual {
+      position: relative;
+      width: 100%; aspect-ratio: 1;
+      max-width: 440px;
+    }
+    .why-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(245,166,35,.15);
+      animation: spin-slow linear infinite;
+    }
+    .why-ring-1 { inset: 0; animation-duration: 20s; }
+    .why-ring-2 { inset: 15%; animation-duration: 14s; animation-direction: reverse; }
+    .why-ring-3 { inset: 30%; animation-duration: 10s; border-color: rgba(0,212,255,.1); }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    .why-center {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-center-box {
+      width: 120px; height: 120px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-3));
+      border-radius: 28px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 0 60px rgba(245,166,35,.35);
+      transform: rotate(12deg);
+    }
+    .why-center-box .num {
+      font-family: var(--font-h); font-weight: 900; font-size: 36px;
+      color: var(--navy); line-height: 1;
+    }
+    .why-center-box .lbl {
+      font-size: 10px; font-weight: 700; color: var(--navy);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .why-dots {
+      position: absolute; inset: 0;
+    }
+    .why-dot {
+      position: absolute; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--gold);
+      box-shadow: 0 0 12px rgba(245,166,35,.6);
+    }
+    .why-points { display: flex; flex-direction: column; gap: 24px; }
+    .why-point {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; border-radius: 16px;
+      border: 1px solid var(--white10);
+      background: var(--white05);
+      transition: border-color .3s, background .3s;
+    }
+    .why-point:hover { border-color: rgba(245,166,35,.3); background: rgba(245,166,35,.05); }
+    .why-point-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px; background: rgba(245,166,35,.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .why-point h4 { font-family: var(--font-h); font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .why-point p { font-size: 12px; color: var(--white60); line-height: 1.6; }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--navy-2);
+      overflow: hidden;
+    }
+    .contact-wrap {
+      max-width: 1100px; margin: 52px auto 0;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    /* ─── Info cards ─── */
+    .info-cards { display: flex; flex-direction: column; gap: 16px; }
+    .info-card {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 24px; border-radius: 18px;
+      border: 1px solid var(--white10);
+      background: var(--white05);
+      transition: border-color .3s, transform .3s;
+    }
+    .info-card:hover { border-color: rgba(245,166,35,.3); transform: translateX(6px); }
+    .info-card-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 16px rgba(245,166,35,.3);
+    }
+    .info-card-title {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .info-card-val {
+      font-family: var(--font-h); font-weight: 700; font-size: 17px;
+      line-height: 1.4;
+    }
+    .info-card-val a {
+      color: var(--white); text-decoration: none;
+      transition: color .2s;
+    }
+    .info-card-val a:hover { color: var(--gold); }
+    .info-card-sub { font-size: 12px; color: var(--white60); margin-top: 4px; line-height: 1.6; }
+
+    /* ─── Map embed ─── */
+    .map-wrap {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--white10);
+      position: relative;
+      height: 100%;
+      min-height: 400px;
+    }
+    .map-wrap iframe {
+      width: 100%; height: 100%;
+      min-height: 400px;
+      border: 0; filter: grayscale(30%) invert(90%) hue-rotate(180deg);
+    }
+    .map-overlay {
+      position: absolute; top: 16px; left: 16px;
+      background: rgba(2,11,24,.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(245,166,35,.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+    .map-overlay p { font-size: 12px; font-weight: 600; color: var(--gold); }
+    .map-overlay span { font-size: 11px; color: var(--white60); }
+
+    /* ─── ENQUIRY FORM ─── */
+    #enquiry { background: var(--navy-3); }
+    .enquiry-wrap {
+      max-width: 700px; margin: 0 auto;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: span 2; }
+    .form-group label { font-size: 12px; font-weight: 600; color: var(--white60); letter-spacing: .5px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 16px;
+      background: var(--white05);
+      border: 1px solid var(--white10);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: var(--font-b); font-size: 14px;
+      outline: none;
+      transition: border-color .2s, background .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: rgba(245,166,35,.05);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--white30); }
+    .form-group select option { background: var(--navy-3); color: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; margin-top: 8px;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: var(--navy);
+      font-family: var(--font-h); font-weight: 800; font-size: 15px;
+      border: none; border-radius: 12px; cursor: pointer;
+      box-shadow: 0 8px 30px rgba(245,166,35,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,166,35,.5); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative; z-index: 1;
+      background: var(--navy);
+      border-top: 1px solid var(--white10);
+      padding: 40px 5%;
+      text-align: center;
+    }
+    .footer-logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 16px; text-decoration: none;
+    }
+    .footer-logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-3));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-h); font-weight: 900; font-size: 14px; color: var(--navy);
+    }
+    .footer-logo-text { font-family: var(--font-h); font-weight: 800; font-size: 16px; }
+    .footer-logo-text span { color: var(--gold); }
+    .footer-links {
+      display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .footer-links a {
+      font-size: 12px; color: var(--white60);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: var(--white30); margin-top: 16px; }
+
+    /* ─── WHATSAPP FAB ─── */
+    #wa-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.45);
+      text-decoration: none;
+      transition: transform .3s, box-shadow .3s;
+      animation: wa-bounce 2s 3s ease both;
+    }
+    #wa-fab:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(37,211,102,.6); }
+    #wa-fab svg { width: 30px; height: 30px; fill: white; }
+    .wa-pulse {
+      position: absolute; inset: -6px;
+      border-radius: 50%; border: 2px solid rgba(37,211,102,.4);
+      animation: wa-ring 2s ease-out infinite;
+    }
+    @keyframes wa-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @keyframes wa-bounce {
+      0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+      80% { transform: scale(1.1) rotate(10deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── TICKER ─── */
+    .ticker-wrap {
+      position: relative; z-index: 1;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--gold), #E8940E);
+      padding: 10px 0;
+    }
+    .ticker-inner {
+      display: flex; gap: 60px;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-h); font-weight: 700; font-size: 12px;
+      color: var(--navy); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .ticker-item .sep { opacity: .4; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 70px; left: 0; right: 0;
+        background: rgba(2,11,24,.97);
+        backdrop-filter: blur(20px);
+        padding: 24px 5% 32px;
+        gap: 20px; border-bottom: 1px solid var(--white10);
+      }
+      .nav-links.open a { font-size: 16px; }
+      .hamburger { display: flex; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { letter-spacing: -1px; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat-num { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Animated background canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- WhatsApp Floating Button -->
+<a id="wa-fab" href="https://wa.me/919123384377?text=Hello%20NxtGen%20Solutions%2C%20I%20need%20assistance." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">NX</div>
+    <div class="nav-logo-text">NxtGen <span>Solutions</span></div>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+    <a href="#enquiry">Enquiry</a>
+    <a href="tel:+919123384377" class="nav-cta">
+      📞 Call Now
+    </a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Ticker -->
+<div class="ticker-wrap" style="margin-top:70px">
+  <div class="ticker-inner" id="ticker">
+    <div class="ticker-item">📄 ITR Filing @ ₹199 <span class="sep">✦</span></div>
+    <div class="ticker-item">🧾 GST Registration & Returns <span class="sep">✦</span></div>
+    <div class="ticker-item">💳 TDS Compliance — Zero Penalty <span class="sep">✦</span></div>
+    <div class="ticker-item">👷 PF & ESIC Registration <span class="sep">✦</span></div>
+    <div class="ticker-item">🏦 Bank Loan Documentation <span class="sep">✦</span></div>
+    <div class="ticker-item">📈 DPR Preparation <span class="sep">✦</span></div>
+    <div class="ticker-item">📒 Day-to-Day Accounting @ ₹499/mo <span class="sep">✦</span></div>
+    <div class="ticker-item">🎯 Business Plan Preparation <span class="sep">✦</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item">📄 ITR Filing @ ₹199 <span class="sep">✦</span></div>
+    <div class="ticker-item">🧾 GST Registration & Returns <span class="sep">✦</span></div>
+    <div class="ticker-item">💳 TDS Compliance — Zero Penalty <span class="sep">✦</span></div>
+    <div class="ticker-item">👷 PF & ESIC Registration <span class="sep">✦</span></div>
+    <div class="ticker-item">🏦 Bank Loan Documentation <span class="sep">✦</span></div>
+    <div class="ticker-item">📈 DPR Preparation <span class="sep">✦</span></div>
+    <div class="ticker-item">📒 Day-to-Day Accounting @ ₹499/mo <span class="sep">✦</span></div>
+    <div class="ticker-item">🎯 Business Plan Preparation <span class="sep">✦</span></div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-badge"><div class="dot"></div> India's Trusted Financial Partner — Kolkata</div>
+
+  <h1 class="hero-title">
+    <span class="line-outline">Your Business,</span>
+    <span class="line-gold">Financially</span>
+    Empowered.
+  </h1>
+
+  <p class="hero-desc">
+    From bookkeeping to ITR filing, GST compliance to business loan documentation —
+    NxtGen Solutions is your all-in-one financial partner.
+    Professional. Affordable. Reliable.
+  </p>
+
+  <div class="hero-chips">
+    <div class="chip">✅ ITR Filing @ ₹199</div>
+    <div class="chip">✅ GST Registration & Returns</div>
+    <div class="chip">✅ TDS Compliance</div>
+    <div class="chip">✅ Same-Day Service</div>
+    <div class="chip">✅ Free First Consultation</div>
+    <div class="chip">✅ 100% Confidential</div>
+  </div>
+
+  <div class="hero-btns">
+    <a href="tel:+919123384377" class="btn-primary">📞 Call: +91 91233 84377</a>
+    <a href="#enquiry" class="btn-secondary">✉️ Send Enquiry</a>
+  </div>
+</section>
+
+<!-- Stats Strip -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="500">0+</div>
+      <div class="stat-lbl">Happy Clients</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="10">0+</div>
+      <div class="stat-lbl">Years Experience</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="5000">0+</div>
+      <div class="stat-lbl">ITRs Filed</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">99%</div>
+      <div class="stat-lbl">Accuracy Rate</div>
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<section id="services">
+  <div class="center">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Comprehensive <em>Financial Services</em></h2>
+    <p class="section-desc">From daily bookkeeping to complex loan documentation — we handle every financial obligation on time, every time.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="svc-card feat reveal" style="--card-clr:rgba(245,166,35,.1);--card-border:rgba(245,166,35,.4)">
+      <div class="svc-icon" style="--icon-bg:rgba(245,166,35,.2);--icon-border:rgba(245,166,35,.3)">📄</div>
+      <h3>ITR Filing</h3>
+      <p>Expert income tax return filing for salaried employees, freelancers, and business owners. Maximize your refunds with our certified team.</p>
+      <div class="svc-badge">Starting @ ₹199</div>
+    </div>
+
+    <div class="svc-card reveal" style="--card-clr:rgba(0,212,255,.07);--card-border:rgba(0,212,255,.25)">
+      <div class="svc-icon" style="--icon-bg:rgba(0,212,255,.12);--icon-border:rgba(0,212,255,.2)">🧾</div>
+      <h3>GST Services</h3>
+      <p>Fresh GST registration, monthly/quarterly GSTR-1, GSTR-3B filing, annual GSTR-9, ITC reconciliation and notice handling.</p>
+      <div class="svc-badge">Registration + Returns</div>
+    </div>
+
+    <div class="svc-card reveal" style="--card-clr:rgba(167,139,250,.07);--card-border:rgba(167,139,250,.25)">
+      <div class="svc-icon" style="--icon-bg:rgba(167,139,250,.12);--icon-border:rgba(167,139,250,.2)">💳</div>
+      <h3>TDS Compliance</h3>
+      <p>Timely TDS computation, challan payment, 24Q & 26Q return filing with Form 16/16A generation. Zero penalty guaranteed.</p>
+      <div class="svc-badge">Zero Penalty</div>
+    </div>
+
+    <div class="svc-card reveal" style="--card-clr:rgba(52,211,153,.07);--card-border:rgba(52,211,153,.25)">
+      <div class="svc-icon" style="--icon-bg:rgba(52,211,153,.12);--icon-border:rgba(52,211,153,.2)">📒</div>
+      <h3>Accounting & Bookkeeping</h3>
+      <p>Daily transaction recording, bank reconciliation, financial statements, MIS reporting — keep your books always audit-ready.</p>
+      <div class="svc-badge">From ₹499/month</div>
+    </div>
+
+    <div class="svc-card reveal" style="--card-clr:rgba(251,146,60,.07);--card-border:rgba(251,146,60,.25)">
+      <div class="svc-icon" style="--icon-bg:rgba(251,146,60,.12);--icon-border:rgba(251,146,60,.2)">👷</div>
+      <h3>PF & ESIC</h3>
+      <p>Complete Provident Fund and ESIC management — registration, monthly challans, ECR filing, and compliance support for businesses.</p>
+      <div class="svc-badge">Employee Compliance</div>
+    </div>
+
+    <div class="svc-card reveal" style="--card-clr:rgba(236,72,153,.07);--card-border:rgba(236,72,153,.25)">
+      <div class="svc-icon" style="--icon-bg:rgba(236,72,153,.12);--icon-border:rgba(236,72,153,.2)">🏦</div>
+      <h3>Loan Documentation</h3>
+      <p>Professional DPR preparation, CMA data, projected financials, and complete bank loan file — maximize your approval chances.</p>
+      <div class="svc-badge">Loan Ready</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Why Us -->
+<section id="why">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+    <div>
+      <div class="section-label reveal">Why Choose Us</div>
+      <h2 class="section-title reveal">Your <em>Financial Peace</em><br/>Is Our Mission</h2>
+      <p class="section-desc reveal">We combine deep expertise with unmatched reliability. Every deadline met. Every rupee saved. Every filing perfect.</p>
+
+      <div class="why-points" style="margin-top:36px">
+        <div class="why-point reveal">
+          <div class="why-point-icon">🔒</div>
+          <div>
+            <h4>100% Confidential</h4>
+            <p>Your financial data is encrypted and never shared. Complete privacy guaranteed.</p>
+          </div>
+        </div>
+        <div class="why-point reveal">
+          <div class="why-point-icon">⚡</div>
+          <div>
+            <h4>Same-Day Processing</h4>
+            <p>Most filings and registrations processed on the same business day. No waiting.</p>
+          </div>
+        </div>
+        <div class="why-point reveal">
+          <div class="why-point-icon">🏆</div>
+          <div>
+            <h4>Certified Experts</h4>
+            <p>10+ years of combined experience. CA-backed processes for every service.</p>
+          </div>
+        </div>
+        <div class="why-point reveal">
+          <div class="why-point-icon">💰</div>
+          <div>
+            <h4>Transparent Pricing</h4>
+            <p>No hidden charges. Fixed affordable prices. ITR starts at just ₹199.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rotating rings visual -->
+    <div class="why-visual" style="margin:0 auto">
+      <div class="why-ring why-ring-1"></div>
+      <div class="why-ring why-ring-2"></div>
+      <div class="why-ring why-ring-3"></div>
+
+      <!-- 4 dots on rings -->
+      <div class="why-dots">
+        <div class="why-dot" style="top:2%;left:50%;transform:translateX(-50%)"></div>
+        <div class="why-dot" style="bottom:2%;left:50%;transform:translateX(-50%)"></div>
+        <div class="why-dot" style="left:2%;top:50%;transform:translateY(-50%)"></div>
+        <div class="why-dot" style="right:2%;top:50%;transform:translateY(-50%)"></div>
+      </div>
+
+      <div class="why-center">
+        <div class="why-center-box">
+          <div class="num">10+</div>
+          <div class="lbl">Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="center reveal">
+    <div class="section-label">Find Us</div>
+    <h2 class="section-title">Get in <em>Touch</em></h2>
+    <p class="section-desc" style="margin:14px auto 0">Visit us, call us, or drop an email. We respond within 2 hours on all working days.</p>
+  </div>
+
+  <div class="contact-wrap">
+    <!-- Info Cards -->
+    <div class="info-cards">
+
+      <div class="info-card reveal">
+        <div class="info-card-icon">📍</div>
+        <div>
+          <div class="info-card-title">Office Address</div>
+          <div class="info-card-val">EE-107/2, Sector II<br/>Near Tank No. 10</div>
+          <div class="info-card-sub">Bidhannagar, Salt Lake<br/>Kolkata — 700 091, West Bengal</div>
+        </div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-card-icon">📞</div>
+        <div>
+          <div class="info-card-title">Phone / WhatsApp</div>
+          <div class="info-card-val">
+            <a href="tel:+919123384377">+91 91233 84377</a><br/>
+            <a href="tel:+919163479987">+91 91634 79987</a>
+          </div>
+          <div class="info-card-sub">Mon – Sat &nbsp;|&nbsp; 9:00 AM – 7:00 PM</div>
+        </div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-card-icon">✉️</div>
+        <div>
+          <div class="info-card-title">Email</div>
+          <div class="info-card-val"><a href="mailto:solution.nxtgen@gmail.com">solution.nxtgen@gmail.com</a></div>
+          <div class="info-card-sub">We reply within 2 business hours</div>
+        </div>
+      </div>
+
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/919123384377?text=Hello%20NxtGen%20Solutions%2C%20I%20need%20help%20with%20my%20finances." target="_blank" rel="noopener"
+        style="display:flex;align-items:center;gap:16px;padding:20px 24px;border-radius:18px;border:1px solid rgba(37,211,102,.3);background:rgba(37,211,102,.07);text-decoration:none;transition:transform .3s,border-color .3s"
+        onmouseover="this.style.transform='translateX(6px)';this.style.borderColor='rgba(37,211,102,.5)'"
+        onmouseout="this.style.transform='';this.style.borderColor='rgba(37,211,102,.3)'"
+        class="reveal">
+        <div style="width:48px;height:48px;flex-shrink:0;border-radius:12px;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.35)">
+          <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#25D366;margin-bottom:4px">WhatsApp Chat</div>
+          <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;color:#fff">Chat Instantly</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:2px">Fastest response — usually under 30 min</div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Map -->
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.1234567890!2d88.4135!3d22.5765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275b000000001%3A0x1!2sSalt+Lake+Sector+II%2C+Kolkata%2C+West+Bengal+700091!5e0!3m2!1sen!2sin!4v1234567890"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="NxtGen Solutions Office Location — Salt Lake, Kolkata">
+      </iframe>
+      <div class="map-overlay">
+        <p>📍 NxtGen Solutions</p>
+        <span>EE-107/2, Sector II, Salt Lake, Kolkata</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enquiry Form -->
+<section id="enquiry">
+  <div class="enquiry-wrap">
+    <div class="center reveal">
+      <div class="section-label">Free Consultation</div>
+      <h2 class="section-title">Send an <em>Enquiry</em></h2>
+      <p class="section-desc" style="margin:14px auto 0">Tell us what you need. Our expert will call you back within 2 hours on working days.</p>
+    </div>
+
+    <form class="form-grid" id="enquiry-form" onsubmit="handleSubmit(event)">
+      <div class="form-group reveal">
+        <label>Full Name *</label>
+        <input type="text" id="f-name" placeholder="Your full name" required />
+      </div>
+      <div class="form-group reveal">
+        <label>Mobile Number *</label>
+        <input type="tel" id="f-phone" placeholder="9XXXXXXXXX" maxlength="10" required />
+      </div>
+      <div class="form-group reveal">
+        <label>Email Address</label>
+        <input type="email" id="f-email" placeholder="you@example.com" />
+      </div>
+      <div class="form-group reveal">
+        <label>Service Required *</label>
+        <select id="f-service" required>
+          <option value="" disabled selected>Select a service…</option>
+          <option>ITR Filing</option>
+          <option>GST Registration</option>
+          <option>GST Return Filing</option>
+          <option>TDS Compliance</option>
+          <option>PF & ESIC Registration</option>
+          <option>Accounting & Bookkeeping</option>
+          <option>Bank Loan Documentation</option>
+          <option>DPR Preparation</option>
+          <option>Business Plan</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full reveal">
+        <label>Message / Additional Details</label>
+        <textarea id="f-msg" placeholder="Tell us more about your requirement…"></textarea>
+      </div>
+      <div class="form-group full reveal">
+        <button type="submit" class="form-submit">🚀 Submit Enquiry — We'll Call You Back</button>
+      </div>
+    </form>
+
+    <!-- Success message -->
+    <div id="form-success" style="display:none;text-align:center;padding:40px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);border-radius:20px;margin-top:20px">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:22px;margin-bottom:8px">Enquiry Received!</h3>
+      <p style="color:rgba(255,255,255,.6);font-size:14px">Thank you! Our expert will contact you within 2 hours.</p>
+      <a href="https://wa.me/919123384377" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:12px 24px;background:#25D366;color:#000;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px">
+        💬 Also Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="#hero" class="footer-logo">
+    <div class="footer-logo-icon">NX</div>
+    <div class="footer-logo-text">NxtGen <span>Solutions</span></div>
+  </a>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+    <a href="#enquiry">Enquiry</a>
+    <a href="tel:+919123384377">+91 91233 84377</a>
+    <a href="tel:+919163479987">+91 91634 79987</a>
+    <a href="mailto:solution.nxtgen@gmail.com">solution.nxtgen@gmail.com</a>
+  </div>
+  <div class="footer-copy">
+    © <span id="yr"></span> NxtGen Solutions. EE-107/2, Sector II, Bidhannagar, Salt Lake, Kolkata — 700 091.
+    <br/>Professional Accounting, Taxation & Business Consulting.
+  </div>
+</footer>
+
+<script>
+  /* ── Year ── */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ── Navbar scroll ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  document.querySelectorAll('#nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+  });
+
+  /* ── Reveal on scroll ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── Counter animation ── */
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        if (!target) return;
+        let start = 0;
+        const step = target / 60;
+        const timer = setInterval(() => {
+          start = Math.min(start + step, target);
+          el.textContent = Math.floor(start) + '+';
+          if (start >= target) clearInterval(timer);
+        }, 25);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+
+  /* ── Form submit ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name    = document.getElementById('f-name').value;
+    const phone   = document.getElementById('f-phone').value;
+    const service = document.getElementById('f-service').value;
+    const msg     = document.getElementById('f-msg').value;
+
+    // Open WhatsApp with pre-filled message
+    const waText = `Hello NxtGen Solutions!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}%0AMessage: ${encodeURIComponent(msg || 'Please contact me.')}`;
+    window.open(`https://wa.me/919123384377?text=${waText}`, '_blank');
+
+    document.getElementById('enquiry-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+
+  /* ── Particle Canvas ── */
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.5 + .3;
+      this.vx = (Math.random() - .5) * .4;
+      this.vy = (Math.random() - .5) * .4;
+      this.alpha = Math.random() * .5 + .1;
+      this.gold = Math.random() > .7;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.gold
+        ? `rgba(245,166,35,${this.alpha})`
+        : `rgba(255,255,255,${this.alpha * .5})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(245,166,35,${.08 * (1 - dist/100)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    drawConnections();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>
